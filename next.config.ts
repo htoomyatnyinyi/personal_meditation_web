@@ -15,9 +15,8 @@ const nextConfig: NextConfig = {
     }
     return config;
   },
-  // Turbopack fallback if needed (disables webpack conflicts)
   experimental: {
-    turbopack: true, // Keep enabled, but add root if using linked deps
+    // Turbopack is not available as a configuration option in this version
   },
 };
 

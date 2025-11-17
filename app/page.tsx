@@ -127,7 +127,7 @@ export default function Home() {
               onChange={(e) =>
                 setInputMinutes(Math.max(1, Number(e.target.value)))
               }
-              className="w-full p-5 text-4xl text-center text-black rounded-xl font-mono"
+              className="w-full p-5 text-4xl text-center text-white rounded-xl font-mono"
               placeholder="120"
             />
           </div>

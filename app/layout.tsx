@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-// @ts-ignore - no type declarations for CSS side-effect import
 import "./globals.css";
+// @ts-ignore - no type declarations for CSS side-effect import
 // import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({

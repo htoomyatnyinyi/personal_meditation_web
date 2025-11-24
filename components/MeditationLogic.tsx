@@ -194,7 +194,7 @@ const MeditationLogic = () => {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-900 via-white to-slate-900 text-black flex flex-col items-center justify-center p-6">
-      <h1 className="text-4xl md:text-6xl font-bold mb-8  xl:text-white ">
+      <h1 className="text-3xl md:text-6xl font-bold mb-8  xl:text-white ">
         ဘုရား ... တရား ... သံယာ
       </h1>
       <br />

@@ -1,9 +1,14 @@
+import Logic2 from "@/components/Logic2";
+import MeditationLogic from "@/components/MeditationLogic";
 import MeditationTimer from "@/components/MeditationTimer";
 
 const page = () => {
   return (
     <div>
-      <MeditationTimer />
+      {/* <Logic2 /> */}
+
+      <MeditationLogic />
+      {/* <MeditationTimer /> */}
     </div>
   );
 };

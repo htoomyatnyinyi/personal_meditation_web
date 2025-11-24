@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
-export default function MeditationLogic() {
-  const [inputMinutes, setInputMinutes] = useState(120); // Default 2 hours
+const MeditationLogic = () => {
+  const [inputMinutes, setInputMinutes] = useState(90); // Default 2 hours
   const [timeLeft, setTimeLeft] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
@@ -21,7 +21,7 @@ export default function MeditationLogic() {
   // Initialize audio only on client
   useEffect(() => {
     bellSoft.current = new Audio("/audio/ting.mp3"); // Softer bell for intervals
-    bellFinal.current = new Audio("/audio/ting.mp3"); // Louder or different for end
+    bellFinal.current = new Audio("/audio/ting1.mp3"); // Louder or different for end
 
     // Preload + unlock audio context on first tap
     const unlock = () => {
@@ -193,13 +193,18 @@ export default function MeditationLogic() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white flex flex-col items-center justify-center p-6">
-      <h1 className="text-5xl md:text-6xl font-bold mb-8">Meditation Timer</h1>
+    <div className="min-h-screen bg-linear-to-br from-slate-900 via-white to-slate-900 text-black flex flex-col items-center justify-center p-6">
+      <h1 className="text-4xl md:text-6xl font-bold mb-8  xl:text-white ">
+        ဘုရား ... တရား ... သံယာ
+      </h1>
+      <br />
 
       {!isRunning ? (
         <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-10 max-w-md w-full shadow-2xl">
           <div className="mb-8">
-            <label className="block text-2xl mb-4">ตั้งเวลาสมาธิ (นาที)</label>
+            <label className="block text-2xl  mb-4">
+              တရားထိုင်ချိန် သတ်မှတ်ရန် (မိနစ်)
+            </label>
             <input
               type="number"
               value={inputMinutes}
@@ -212,7 +217,13 @@ export default function MeditationLogic() {
           </div>
 
           <div className="mb-8">
-            <p className="text-xl mb-3">เสียงกระดิ่งทุก ๆ</p>
+            <p className="text-xl mb-3 underline">အချိန် သတ်မှတ်ရန်</p>
+            {/* <p className="text-wrap">
+              အချိန်သတ်မှတ်ရန်ဆိုသည်မှာ။ ။ ၃၀ မိနစ် (သို့) ၁ နာရီ
+              သတ်မှတ်ထားလျှင် သတ်မှတ်ထားသည့် မိနစ်အချိန်ရောက်တိုင်း
+              ခေါင်းလောင်းသံ မြည်မှာဖြစ်ပါတယ်။
+            </p> */}
+            <br />
             <div className="grid grid-cols-2 gap-4">
               <button
                 onClick={() => setIntervalMode(30)}
@@ -222,7 +233,7 @@ export default function MeditationLogic() {
                     : "bg-white/20"
                 }`}
               >
-                30 นาที
+                (၃၀) မိနစ်
               </button>
               <button
                 onClick={() => setIntervalMode(60)}
@@ -232,28 +243,33 @@ export default function MeditationLogic() {
                     : "bg-white/20"
                 }`}
               >
-                1 ชั่วโมง
+                (၁) နာရီ
               </button>
             </div>
           </div>
 
           <button
             onClick={startTimer}
-            className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 py-6 rounded-2xl text-3xl font-bold shadow-lg"
+            className="w-full bg-linear-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 py-6 rounded-2xl text-3xl font-bold shadow-lg"
           >
-            เริ่มสมาธิ
+            စတင်မည်
           </button>
         </div>
       ) : (
         <div className="text-center">
-          <div className="text-8xl md:text-9xl font-mono mb-10 tracking-wider">
+          <div className="text-7xl md:text-9xl font-mono mb-10 tracking-wider">
             {formatTime(timeLeft)}
           </div>
 
           <div className="mb-10 text-xl opacity-90">
-            {intervalMode === 30 ? "🔔 ทุก 30 นาที" : "🔔 ทุก 1 ชั่วโมง"}
-            {timeLeft > 0 && timeLeft <= 60 && " — กำลังจะจบ"}
-            <p className="text-sm mt-2">หน้าจอจะไม่ดับระหว่างสมาธิ</p>{" "}
+            {intervalMode === 30
+              ? "မိနစ် ၃၀ ပြည့်လျှင် 🔔"
+              : "၁ နာရီ ပြည့်လျှင် 🔔"}
+            {timeLeft > 0 && timeLeft <= 60 && " — ကျန်ရှိသည့်အချိန်"}
+            <p className="text-sm mt-2 ">
+              တရားထိုင်ချိန်အတွင်း ဖုန်း (သို့) ကွန်ပျုတာ
+            </p>
+            <p className="text-sm mt-2 "> မှန်သားပြင်သည် ပိတ်သွားမည်မဟုတ်ပါ။</p>
             {/* User note */}
           </div>
 
@@ -261,10 +277,11 @@ export default function MeditationLogic() {
             onClick={stopTimer}
             className="bg-red-600 hover:bg-red-700 px-12 py-6 rounded-full text-3xl font-bold shadow-2xl"
           >
-            หยุด
+            ရပ်မည်
           </button>
         </div>
       )}
     </div>
   );
-}
+};
+export default MeditationLogic;

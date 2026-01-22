@@ -1,1 +1,21 @@
+name: Hello GitHub Actions 🌟
 
+on:
+  push:              # runs when you push code
+  workflow_dispatch: # also lets you run it manually
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print greeting
+        run: echo "Hello! GitHub Actions works! 🚀"
+
+      - name: Show who pushed
+        run: echo "Triggered by ${{ github.actor }}"
+
+      - name: Show OS version
+        run: |
+          echo "Running on:"
+          cat /etc/os-release | grep PRETTY_NAME
